@@ -107,8 +107,8 @@ class filterTable {
     };
 
     private render(cellsData, arr, colIndex): void{
-        for (var i = 0; i < cellsData.rows.length; i++) {
-            for (var j = 0; j < cellsData.rows[i].cells.length; j++) {
+        for (let i = 0; i < cellsData.rows.length; i++) {
+            for (let j = 0; j < cellsData.rows[i].cells.length; j++) {
                 cellsData.rows[i].cells[colIndex].innerHTML = arr[i];
             }
         }
@@ -122,21 +122,21 @@ class filterTable {
             this.render(tbody, this.dates.existData, 2);
             this.render(tbody, this.sortColumn(this.names), 0);
             this.names.check();
-        })
+        });
         this.exp.element.addEventListener("click", () => {
             console.log("This is exp click");
             this.render(tbody, this.names.existData, 0);
             this.render(tbody, this.dates.existData, 2);
             this.render(tbody, this.sortColumn(this.exp), 1);
             this.exp.check();
-        })
+        });
         this.dates.element.addEventListener("click", () => {
             console.log("This is dates click");
             this.render(tbody, this.names.existData, 0);
             this.render(tbody, this.exp.existData, 1);
             this.render(tbody, this.sortColumn(this.dates), 2);
             this.dates.check();
-        })
+        });
     }
 
 }
