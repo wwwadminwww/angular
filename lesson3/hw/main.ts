@@ -1,8 +1,3 @@
-let tbody = <HTMLElement>document.getElementById('tbody');
-let tName = <HTMLElement>document.getElementById('name');
-let tExp = <HTMLElement>document.getElementById('experience');
-let tDate = <HTMLElement>document.getElementById('birthday');
-
 interface Column {
     existData: Array<any>,
     type: string,
@@ -145,6 +140,11 @@ class filterTable {
     }
 
 }
+
+let tbody = <HTMLElement>document.getElementById('tbody');
+let tName = <HTMLElement>document.getElementById('name');
+let tExp = <HTMLElement>document.getElementById('experience');
+let tDate = <HTMLElement>document.getElementById('birthday');
 
 let sort = new filterTable(tbody, tName, tExp, tDate);
 

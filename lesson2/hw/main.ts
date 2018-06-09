@@ -1,8 +1,22 @@
-class Someclass {
-    names: string[];
-    countOfNames: any[] = [];
+interface Item {
+    item: { name: string, count: number};
+}
 
-    constructor(arr: Array<string>) {
+interface ItemNumber{
+    itemNum: { number: number, count: number}
+}
+
+interface Counter {
+    name: string, count: number
+}
+
+class Someclass implements Item
+{
+    names: any[];
+    countOfNames: any[] = [];
+    item: { name: string, count: number};
+
+    constructor(arr: Array<any>) {
         this.names = arr;
     }
 
@@ -10,17 +24,22 @@ class Someclass {
         let arr = this.countOfNames.slice();
         for (let i in this.names) {
             if (arr[0] == undefined) {
-                arr.push({name: this.names[i], count: 1});
+                this.item = {name: this.names[i], count: 1};
+                arr.push(this.item);
             } else {
                 let flag = true;
-                arr.map((el) => {
+                arr.map((el: any) => {
                     if (el.name == this.names[i]) {
+                        el.count++;
+                        flag = false;
+                    }else if (!isNaN(el) && el === this.names[i]){
                         el.count++;
                         flag = false;
                     }
                 });
                 if (flag) {
-                    arr.push({name: this.names[i], count: 1});
+                    this.item = {name: this.names[i], count: 1};
+                    arr.push(this.item);
                 }
             }
         }
@@ -43,7 +62,7 @@ class Someclass {
 
 }
 
-let arr = ['Bob', 'John','Peter', 'Alex', 'Alex', 'Bob', 'Bob', 'Alex', 'Alex', 'Bob', 'Kate', 'John'];
+let arr = ['Bob',1 , 'John', 2,4,2, 'Peter', 'Alex', 'Alex', 'Bob', 'Bob', 'Alex', 'Alex', 'Bob', 'Kate', 'John'];
 
 let ggg = new Someclass(arr);
 
